@@ -8,14 +8,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-
+      - uses: actions/checkout@main
       - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Run a powershell
-        run: |
-          write-host $env:CLIENT_ID
-        shell: pwsh
-        env:
-          CLIENT_ID: ${{secrets.AZURE_CREDENTIALS}}
+      - uses: Azure/CLI@v1
+        with:
+          inlineScript: |
+            #!/bin/bash
+            if $(az group exists --name ${{ secrets.ResourceGroupName }}) ; then
+              echo "Azure resource group already exists, skipping creation..."
+            else
+              az group create --name ${{ secrets.ResourceGroupName }} --location ${{ secrets.ResourceGroupLocation }}
+              echo "Azure resource group created"
+            fi

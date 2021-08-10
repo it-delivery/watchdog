@@ -26,13 +26,24 @@ jobs:
             fi
       
       - uses: azure/arm-deploy@v1
+        id: 'storageaccount'
         with:
           resourceGroupName: ${{ secrets.ResourceGroupName }}
           template: ./infrastructure/storage-account.bicep
           parameters: storageAccountName=${{ secrets.StorageAccountName }}
 
       - uses: azure/arm-deploy@v1
+        id: 'appserviceplan'
         with:
           resourceGroupName: ${{ secrets.ResourceGroupName }}
           template: ./infrastructure/app-service-plan.bicep
           parameters: appServicePlanName=${{ secrets.appServicePlanName }}
+      
+      - uses: azure/arm-deploy@v1
+        id: 'functionapp'
+        with:
+          resourceGroupName: ${{ secrets.ResourceGroupName }}
+          template: ./infrastructure/function-app.bicep
+          parameters: 
+            functionAppName=${{ secrets.functionAppName }}
+            appServicePlanResourceId ${{ steps.appserviceplan.outputs.appServicePlanResourceId }}

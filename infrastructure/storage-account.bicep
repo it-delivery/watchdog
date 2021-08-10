@@ -1,5 +1,5 @@
 @minLength(3)
-@maxLength(10)
+@maxLength(24)
 param storageAccountName string
 
 resource storageaccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {

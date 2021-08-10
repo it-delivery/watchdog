@@ -27,6 +27,7 @@ jobs:
       
       - uses: azure/arm-deploy@v1
         id: 'storageaccount'
+        name: 'Deploy Storage Account'
         with:
           resourceGroupName: ${{ secrets.ResourceGroupName }}
           template: ./infrastructure/storage-account.bicep
@@ -36,6 +37,7 @@ jobs:
 
       - uses: azure/arm-deploy@v1
         id: 'appserviceplan'
+        name: 'Deploy App Service Plan'
         with:
           resourceGroupName: ${{ secrets.ResourceGroupName }}
           template: ./infrastructure/app-service-plan.bicep
@@ -43,6 +45,7 @@ jobs:
       
       - uses: azure/arm-deploy@v1
         id: 'functionapp'
+        name: 'Deploy Function App'
         with:
           resourceGroupName: ${{ secrets.ResourceGroupName }}
           template: ./infrastructure/function-app.bicep

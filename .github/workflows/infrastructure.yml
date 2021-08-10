@@ -30,7 +30,9 @@ jobs:
         with:
           resourceGroupName: ${{ secrets.ResourceGroupName }}
           template: ./infrastructure/storage-account.bicep
-          parameters: storageAccountName=${{ secrets.StorageAccountName }}
+          parameters: 
+            storageAccountName=${{ secrets.StorageAccountName }}
+            functionAppName=${{ secrets.functionAppName }}
 
       - uses: azure/arm-deploy@v1
         id: 'appserviceplan'

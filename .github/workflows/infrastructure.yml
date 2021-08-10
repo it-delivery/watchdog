@@ -47,3 +47,4 @@ jobs:
           parameters: 
             functionAppName=${{ secrets.functionAppName }}
             appServicePlanResourceId=${{ steps.appserviceplan.outputs.appServicePlanResourceId }}
+            storageAccountResourceId=${{ steps.storageaccount.outputs.storageAccountResourceId }}

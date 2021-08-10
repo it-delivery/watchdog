@@ -8,6 +8,9 @@ resource functionApp 'Microsoft.Web/sites@2021-01-15' = {
   name: functionAppName
   location: resourceGroup().location
   kind: 'functionapp'
+  identity:{
+    type: 'SystemAssigned'
+  }
   properties: {
     serverFarmId: appServicePlanResourceId
     reserved: false

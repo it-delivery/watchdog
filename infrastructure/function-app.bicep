@@ -2,7 +2,7 @@
 @maxLength(24)
 param functionAppName string
 param appServicePlanResourceId string
-param storageAccountResourceId string
+param storageAccountConnectionString string
 
 resource functionApp 'Microsoft.Web/sites@2021-01-15' = {
   name: functionAppName
@@ -22,6 +22,19 @@ resource functionApp 'Microsoft.Web/sites@2021-01-15' = {
       functionAppScaleLimit: 200
       minimumElasticInstanceCount: 0
       powerShellVersion: '~7'
+      use32BitWorkerProcess: false
+      connectionStrings:[
+        {
+          name: 'WEBSITE_CONTENTSHARE'
+          connectionString: functionAppName
+          type: 'Custom'
+        }
+        {
+          name: 'WEBSITE_CONTENTAZUREFILECONNECTIONSTRING'
+          connectionString: storageAccountConnectionString
+          type: 'Custom'
+        }
+      ]
     }
     clientAffinityEnabled: false
     hostNamesDisabled: false

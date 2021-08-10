@@ -53,3 +53,13 @@ jobs:
             functionAppName=${{ secrets.functionAppName }}
             appServicePlanResourceId=${{ steps.appserviceplan.outputs.appServicePlanResourceId }}
             storageAccountConnectionString=${{ steps.storageaccount.outputs.storageAccountConnectionString }}
+
+      - uses: azure/arm-deploy@v1
+        id: 'keyvault'
+        name: 'Deploy Key Vault'
+        with:
+          resourceGroupName: ${{ secrets.ResourceGroupName }}
+          template: ./infrastructure/key-vault.bicep
+          parameters: 
+            keyVaultName=${{ secrets.keyVaultName }}
+            functionAppIdentity=${{ steps.functionapp.outputs.functionAppIdentity }}

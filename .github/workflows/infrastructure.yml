@@ -10,5 +10,7 @@ jobs:
     steps:
       - name: Run a powershell
         run: |
-          get-childitem env:
+          write-host $env:CLIENT_ID
         shell: pwsh
+        env:
+          CLIENT_ID: ${{secrets.SPN_CLIENT_ID}}

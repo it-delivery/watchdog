@@ -30,6 +30,19 @@ resource fileShare 'Microsoft.Storage/storageAccounts/fileServices/shares@2021-0
   }
 }
 
+resource queueServices 'Microsoft.Storage/storageAccounts/queueServices@2021-04-01' = {
+  name: '${storageAccountName}/default'
+  dependsOn:[
+    storageAccount
+  ]
+}
+
+resource queue 'Microsoft.Storage/storageAccounts/queueServices/queues@2021-04-01' = {
+  name: '${storageAccountName}/default/${functionAppName}'
+  dependsOn: [
+    queueServices
+  ]
+}
 
 var storageAccountKey = storageAccount.listKeys().keys[0].value
 output storageAccountConnectionString string = 'DefaultEndpointsProtocol=https;AccountName=${storageAccountName};AccountKey=${storageAccountKey};EndpointSuffix=core.windows.net'

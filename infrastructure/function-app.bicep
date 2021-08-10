@@ -35,6 +35,10 @@ resource functionApp 'Microsoft.Web/sites@2021-01-15' = {
           name: 'WEBSITE_CONTENTAZUREFILECONNECTIONSTRING'
           value: storageAccountConnectionString
         }
+        {
+          name: 'WEBSITE_QUEUENAME'
+          value: functionAppName
+        }
       ]
     }
     clientAffinityEnabled: false

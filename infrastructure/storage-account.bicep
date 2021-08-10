@@ -2,7 +2,7 @@
 @maxLength(24)
 param storageAccountName string
 
-resource storageaccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+resource storageAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
   name: storageAccountName
   sku: {
     name: 'Standard_ZRS'
@@ -10,3 +10,5 @@ resource storageaccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
   kind: 'StorageV2'
   location: resourceGroup().location
 }
+
+output storageAccountResourceId string = storageAccount.id

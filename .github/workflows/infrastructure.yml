@@ -3,11 +3,11 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:
-  environment: T1
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: T3
     steps:
       - uses: actions/checkout@main
       

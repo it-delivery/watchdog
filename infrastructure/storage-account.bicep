@@ -10,5 +10,5 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
   kind: 'StorageV2'
   location: resourceGroup().location
 }
-
-output storageAccountResourceId string = storageAccount.id
+var storageAccountKey = storageAccount.listKeys().keys[0].value
+output storageAccountConnectionString string = 'DefaultEndpointsProtocol=https;AccountName=${storageAccountName};AccountKey=${storageAccountKey};EndpointSuffix=core.windows.net'

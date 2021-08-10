@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
+      
       - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
@@ -23,3 +24,9 @@ jobs:
               az group create --name ${{ secrets.ResourceGroupName }} --location ${{ secrets.ResourceGroupLocation }}
               echo "Azure resource group created"
             fi
+      
+      - uses: azure/arm-deploy@v1
+        with:
+          resourceGroupName: ${{ secrets.ResourceGroupName }}
+          template: ./infrastructure/storage-account.bicep
+          parameters: storageAccountName=${{ secrets.StorageAccountName }}

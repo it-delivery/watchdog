@@ -1,16 +1,21 @@
 name: Infrastructure-Rollout
 on:
   push:
-    branches: [ infrastructure ]
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+
+      - uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
       - name: Run a powershell
         run: |
           write-host $env:CLIENT_ID
         shell: pwsh
         env:
-          CLIENT_ID: ${{secrets.SPN_CLIENT_ID}}
+          CLIENT_ID: ${{secrets.AZURE_CREDENTIALS}}

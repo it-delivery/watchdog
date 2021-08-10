@@ -46,4 +46,4 @@ jobs:
           template: ./infrastructure/function-app.bicep
           parameters: 
             functionAppName=${{ secrets.functionAppName }}
-            appServicePlanResourceId ${{ steps.appserviceplan.outputs.appServicePlanResourceId }}
+            appServicePlanResourceId=${{ steps.appserviceplan.outputs.appServicePlanResourceId }}

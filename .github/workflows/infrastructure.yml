@@ -1,0 +1,14 @@
+name: Infrastructure-Rollout
+on:
+  push:
+    branches: [ infrastructure ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a powershell
+        run: |
+          get-childitem env:
+        shell: pwsh

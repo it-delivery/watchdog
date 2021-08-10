@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: T3
+    environment: T2
     steps:
       - uses: actions/checkout@main
       

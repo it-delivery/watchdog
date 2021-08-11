@@ -18,3 +18,11 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           enable-AzPSSession: true
+      
+      - name: Get Function App Publishing Profile
+        uses: azure/powershell@v1
+        id: webAppPublishingProfile
+        with:
+          inlineScript: |
+            Write-Host $("::set-output name=WebDeploy::"+(Get-AzWebAppPublishingProfile -ResourceGroupName ITDL-WEU-WATCHDOG -Name itdl-weu-watchdog-app -Format "WebDeploy"))
+          azPSVersion: 'latest'

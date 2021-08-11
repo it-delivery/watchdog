@@ -40,8 +40,12 @@ resource functionApp 'Microsoft.Web/sites@2021-01-15' = {
           value: functionAppName
         }
         {
-          name: 'WEBSITE_WEBDEPLOY_USE_SCM'
-          value: 'true'
+          name: 'FUNCTIONS_WORKER_RUNTIME'
+          value: 'powershell'
+        }
+        {
+          name: 'FUNCTIONS_WORKER_RUNTIME_VERSION'
+          value: '~7'
         }
       ]
     }

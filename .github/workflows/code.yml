@@ -24,6 +24,5 @@ jobs:
         id: webAppPublishingProfile
         with:
           inlineScript: |
-            $PublishingProfile = Get-AzWebAppPublishingProfile -ResourceGroupName ITDL-WEU-WATCHDOG -Name itdl-weu-watchdog-app -Format "WebDeploy"
-            echo "action_state=yellow" >> $GITHUB_ENV
+            Get-AzWebAppPublishingProfile -ResourceGroupName ${{ secrets.ResourceGroupName }} -Name ${{ secrets.functionAppName }} -Format "WebDeploy" -OutputFile "${{ secrets.functionAppName }}.publishsettings"
           azPSVersion: 'latest'

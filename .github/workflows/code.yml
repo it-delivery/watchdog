@@ -1,0 +1,20 @@
+name: Code-Rollout
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - sources/**
+  workflow_dispatch:
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: T1
+    steps:
+      - uses: actions/checkout@main
+      
+      - uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          enable-AzPSSession: true

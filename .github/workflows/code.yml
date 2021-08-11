@@ -26,6 +26,14 @@ jobs:
           inlineScript: |
             Get-AzWebAppPublishingProfile -ResourceGroupName ${{ secrets.ResourceGroupName }} -Name ${{ secrets.functionAppName }} -Format "WebDeploy" -OutputFile "${{ secrets.functionAppName }}.publishsettings"
           azPSVersion: 'latest'
+
+      - name: Get Function App Publishing Profile
+        uses: azure/powershell@v1
+        id: webAppPublishingProfile
+        with:
+          inlineScript: |
+            Get-ChildItem
+          azPSVersion: 'latest'
       
       - name: 'Run Azure webapp deploy action using publish profile credentials'
         uses: azure/webapps-deploy@v2

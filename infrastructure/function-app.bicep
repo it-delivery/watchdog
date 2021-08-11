@@ -39,6 +39,10 @@ resource functionApp 'Microsoft.Web/sites@2021-01-15' = {
           name: 'WEBSITE_QUEUENAME'
           value: functionAppName
         }
+        {
+          name: 'WEBSITE_WEBDEPLOY_USE_SCM'
+          value: 'true'
+        }
       ]
     }
     clientAffinityEnabled: false

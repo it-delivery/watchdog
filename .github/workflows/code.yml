@@ -29,7 +29,6 @@ jobs:
 
       - name: Get Function App Publishing Profile
         uses: azure/powershell@v1
-        id: webAppPublishingProfile
         with:
           inlineScript: |
             Get-ChildItem

@@ -24,7 +24,7 @@ jobs:
         id: webAppPublishingProfile
         with:
           inlineScript: |
-            Get-AzWebAppPublishingProfile -ResourceGroupName ${{ secrets.ResourceGroupName }} -Name ${{ secrets.functionAppName }} -Format "WebDeploy" -OutputFile "${{ secrets.functionAppName }}.publishsettings"
+            Get-AzWebAppPublishingProfile -ResourceGroupName ${{ secrets.ResourceGroupName }} -Name ${{ secrets.functionAppName }} -OutputFile "${{ secrets.functionAppName }}.publishsettings"
           azPSVersion: 'latest'
 
       - name: Get Function App Publishing Profile

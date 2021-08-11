@@ -19,25 +19,8 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           enable-AzPSSession: true
       
-#      - name: Get Function App Publishing Profile
-#        uses: azure/powershell@v1
-#        id: webAppPublishingProfile
-#        with:
-#          inlineScript: |
-#            Get-AzWebAppPublishingProfile -ResourceGroupName ${{ secrets.ResourceGroupName }} -Name ${{ secrets.functionAppName }} -OutputFile "${{ secrets.functionAppName }}.publishsettings"
-#          azPSVersion: 'latest'
-#
-#      - name: Listing files
-#        uses: azure/powershell@v1
-#        with:
-#          inlineScript: |
-#            Get-ChildItem
-#            Get-Item -Path Env:
-#          azPSVersion: 'latest'
-      
-      - name: 'Run Azure webapp deploy action using publish profile credentials'
+      - name: 'Deploy Function Apps'
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ secrets.functionAppName }}
-          #publish-profile: "${{ secrets.functionAppName }}.publishsettings"
           package: sources/

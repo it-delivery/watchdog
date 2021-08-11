@@ -27,6 +27,10 @@ resource functionApp 'Microsoft.Web/sites@2021-01-15' = {
       use32BitWorkerProcess: false
       appSettings:[
         {
+          name: 'AzureWebJobsStorage'
+          value: storageAccountConnectionString
+        }
+        {
           name: 'WEBSITE_CONTENTSHARE'
           value: functionAppName
         }

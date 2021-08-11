@@ -3,6 +3,7 @@ Use Microsoft Teams for various notifications through API calls.
 
 # Status
 [![Infrastructure-Rollout](https://github.com/it-delivery/watchdog/actions/workflows/infrastructure.yml/badge.svg)](https://github.com/it-delivery/watchdog/actions/workflows/infrastructure.yml)
+[![Code-Rollout](https://github.com/it-delivery/watchdog/actions/workflows/code.yml/badge.svg)](https://github.com/it-delivery/watchdog/actions/workflows/code.yml)
 
 # Secrets (examples)
 ## Environment secrets

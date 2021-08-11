@@ -24,5 +24,6 @@ jobs:
         id: webAppPublishingProfile
         with:
           inlineScript: |
-            Write-Host $("::set-output name=WebDeploy::"+(Get-AzWebAppPublishingProfile -ResourceGroupName ITDL-WEU-WATCHDOG -Name itdl-weu-watchdog-app -Format "WebDeploy"))
+            $PublishingProfile = Get-AzWebAppPublishingProfile -ResourceGroupName ITDL-WEU-WATCHDOG -Name itdl-weu-watchdog-app -Format "WebDeploy"
+            echo "::set-output name=WebDeploy::$PublishingProfile"
           azPSVersion: 'latest'

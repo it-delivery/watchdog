@@ -24,7 +24,6 @@ resource functionApp 'Microsoft.Web/sites@2021-01-15' = {
       http20Enabled: false
       functionAppScaleLimit: 200
       minimumElasticInstanceCount: 0
-      powerShellVersion: '~7'
       use32BitWorkerProcess: false
       appSettings:[
         {
@@ -38,6 +37,10 @@ resource functionApp 'Microsoft.Web/sites@2021-01-15' = {
         {
           name: 'WEBSITE_QUEUENAME'
           value: functionAppName
+        }
+        {
+          name: 'FUNCTIONS_EXTENSION_VERSION'
+          value: '~3'
         }
         {
           name: 'FUNCTIONS_WORKER_RUNTIME'
